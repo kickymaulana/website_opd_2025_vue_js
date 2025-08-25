@@ -6,3 +6,5 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('HelloWorld');
 });
+
+Route::get('wp-admin/login')->name('login');
