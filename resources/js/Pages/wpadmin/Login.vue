@@ -1,3 +1,10 @@
+<script setup>
+import { useForm } from '@inertiajs/vue3'
+const form = useForm({
+    username: null,
+    password: null,
+})
+</script>
 <template>
     <main>
         <div class="container">
@@ -18,27 +25,27 @@
 
                                 <div class="card-body">
 
+
                                     <div class="pt-4 pb-2">
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
                                     </div>
 
-                                    <form class="row g-3" wire:submit.prevent="login" novalidate>
+                                    <form class="row g-3" novalidate @submit.prevent="form.post('/wpadmin/login')">
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group">
-                                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="yourUsername" required wire:model="username">
-                                                <div class="invalid-feedback">
+                                                <input type="text" class="form-control" :class="{ 'is-invalid': form.errors.username }" id="yourUsername" required wire:model="username">
+                                                <div class="invalid-feedback" v-if="form.errors.username">
+                                                    {{ form.errors.username }}
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="yourPassword" required wire:model="password">
-                                            <div class="invalid-feedback">
+                                            <input type="password" name="password" class="form-control" :class="{ 'is-invalid': form.errors.password }" id="yourPassword" required wire:model="password">
+                                            <div class="invalid-feedback" v-if="form.errors.password">
+                                                {{ form.errors.password }}
                                             </div>
                                         </div>
 
