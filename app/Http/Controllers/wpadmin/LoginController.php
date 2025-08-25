@@ -14,6 +14,16 @@ class LoginController extends Controller
     }
     public function submit(Request $request)
     {
-        dd('testing');
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt(['username' => $request->username, 'password' => $request->password])) {
+            return to_route('users.index');
+        }
+
+        session()->flash('error', 'Username atau password salah');
+        $this->addError('password', 'Username atau password salah');
     }
 }

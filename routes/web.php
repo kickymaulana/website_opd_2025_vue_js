@@ -10,3 +10,4 @@ Route::get('/', function () {
 
 Route::get('wp-admin/login', [LoginController::class, 'login'])->name('login');
 Route::post('wp-admin/login', [LoginController::class, 'submit'])->name('login');
+/* Route::get('/wp-admin', Dashboard::class)->name('wpadmin.dashboard')->middleware('auth'); */
