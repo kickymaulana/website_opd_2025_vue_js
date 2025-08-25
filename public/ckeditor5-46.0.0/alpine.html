@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>CKEditor 5 with Alpine.js</title>
+		<link rel="stylesheet" href="./ckeditor5/ckeditor5.css">
+		<!-- Include Alpine.js -->
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<style>
+			.main-container {
+				width: 795px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body x-data="editorComponent()">
+		<div class="main-container">
+			<div id="editor">
+				<p>Hello from CKEditor 5!</p>
+			</div>
+			
+			<!-- Contoh penggunaan data dari editor dengan Alpine.js -->
+			<div x-show="editor" style="margin-top: 20px;">
+				<button @click="logContent()">Log Editor Content</button>
+				<button @click="setContent()">Set New Content</button>
+			</div>
+		</div>
+		
+		<script type="importmap">
+			{
+				"imports": {
+					"ckeditor5": "./ckeditor5/ckeditor5.js",
+					"ckeditor5/": "./ckeditor5/"
+				}
+			}
+		</script>
+		
+		<script type="module">
+			document.addEventListener('alpine:init', () => {
+				Alpine.data('editorComponent', () => ({
+					editor: null,
+					
+					async init() {
+						try {
+							const { 
+								ClassicEditor,
+								Essentials,
+								Paragraph,
+								Bold,
+								Italic,
+								Font
+							} = await import('ckeditor5');
+							
+							this.editor = await ClassicEditor.create(document.querySelector('#editor'), {
+								licenseKey: 'GPL',
+								plugins: [Essentials, Paragraph, Bold, Italic, Font],
+								toolbar: [
+									'undo', 'redo', '|', 'bold', 'italic', '|',
+									'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+								]
+							});
+							
+							// Untuk akses global jika diperlukan
+							window.editor = this.editor;
+						} catch (error) {
+							console.error('Error initializing CKEditor:', error);
+						}
+					},
+					
+					logContent() {
+						if (this.editor) {
+							console.log(this.editor.getData());
+						}
+					},
+					
+					setContent() {
+						if (this.editor) {
+							this.editor.setData('<p>New content set from Alpine!</p>');
+						}
+					},
+					
+					// Cleanup saat komponen dihancurkan
+					destroy() {
+						if (this.editor) {
+							this.editor.destroy()
+								.then(() => {
+									console.log('Editor was destroyed');
+									this.editor = null;
+								})
+								.catch(error => {
+									console.error('Error destroying editor:', error);
+								});
+						}
+					}
+				}));
+			});
+		</script>
+		
+		<!-- A friendly reminder to run on a server -->
+		<script>
+			window.onload = function() {
+				if (window.location.protocol === "file:") {
+					alert("This sample requires an HTTP server. Please serve this file with a web server.");
+				}
+			};
+		</script>
+	</body>
+</html>
