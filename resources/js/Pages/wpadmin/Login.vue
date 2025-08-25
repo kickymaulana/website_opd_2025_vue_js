@@ -6,7 +6,6 @@ const form = useForm({
     password: null,
 })
 
-
 </script>
 <template>
     <main>
@@ -32,7 +31,7 @@ const form = useForm({
                                     <div class="pt-4 pb-2">
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="$page.props.flash.message">
                                             {{ $page.props.flash.message }}
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" aria-label="Close" @click="$page.props.flash.message = null"></button>
                                         </div>
                                     </div>
 
