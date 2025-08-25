@@ -20,7 +20,7 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt(['username' => $request->username, 'password' => $request->password])) {
-            return to_route('users.index');
+            return to_route('wpadmin.dashboard');
         }
 
         return redirect()->route('login')->with('message', 'Username atau password salah');
