@@ -9,3 +9,4 @@ Route::get('/', function () {
 });
 
 Route::get('wp-admin/login', [LoginController::class, 'login'])->name('login');
+Route::post('wp-admin/login', [LoginController::class, 'submit'])->name('login');

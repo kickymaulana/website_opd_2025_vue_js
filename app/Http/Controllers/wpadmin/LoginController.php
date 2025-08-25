@@ -12,4 +12,8 @@ class LoginController extends Controller
     {
         return Inertia::render('wpadmin/Login');
     }
+    public function submit(Request $request)
+    {
+        dd('testing');
+    }
 }

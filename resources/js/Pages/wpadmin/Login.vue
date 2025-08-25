@@ -1,9 +1,12 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3'
 const form = useForm({
     username: null,
     password: null,
 })
+
+
 </script>
 <template>
     <main>
@@ -29,12 +32,12 @@ const form = useForm({
                                     <div class="pt-4 pb-2">
                                     </div>
 
-                                    <form class="row g-3" novalidate @submit.prevent="form.post('/wpadmin/login')">
+                                    <form class="row g-3" novalidate @submit.prevent="form.post('/wp-admin/login')">
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" :class="{ 'is-invalid': form.errors.username }" id="yourUsername" required wire:model="username">
+                                                <input type="text" class="form-control" :class="{ 'is-invalid': form.errors.username }" id="yourUsername" required v-model="form.username">
                                                 <div class="invalid-feedback" v-if="form.errors.username">
                                                     {{ form.errors.username }}
                                                 </div>
@@ -43,7 +46,7 @@ const form = useForm({
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control" :class="{ 'is-invalid': form.errors.password }" id="yourPassword" required wire:model="password">
+                                            <input type="password" name="password" class="form-control" :class="{ 'is-invalid': form.errors.password }" id="yourPassword" required v-model="form.password">
                                             <div class="invalid-feedback" v-if="form.errors.password">
                                                 {{ form.errors.password }}
                                             </div>
