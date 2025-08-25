@@ -23,7 +23,6 @@ class LoginController extends Controller
             return to_route('users.index');
         }
 
-        session()->flash('error', 'Username atau password salah');
-        $this->addError('password', 'Username atau password salah');
+        return redirect()->route('login')->with('message', 'Username atau password salah');
     }
 }

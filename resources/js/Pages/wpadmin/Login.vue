@@ -30,6 +30,10 @@ const form = useForm({
 
 
                                     <div class="pt-4 pb-2">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="$page.props.flash.message">
+                                            {{ $page.props.flash.message }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
                                     </div>
 
                                     <form class="row g-3" novalidate @submit.prevent="form.post('/wp-admin/login')">
