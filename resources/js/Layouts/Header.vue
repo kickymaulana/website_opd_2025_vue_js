@@ -1,3 +1,9 @@
+<script setup>
+    import { router } from '@inertiajs/vue3';
+    const logout = () => {
+        router.delete('/wp-admin/logout');
+    }
+</script>
 <template>
 
 <header id="header" class="header fixed-top d-flex align-items-center">
@@ -66,8 +72,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                         data-bs-dismiss="modal">Batal</button>
-                    <a type="button" class="btn btn-primary"
-                        href="#" wire:navigate="true">Yakin</a>
+                    <button type="button" class="btn btn-primary"
+                        href="#" @click="logout">Yakin</button>
                 </div>
             </div>
         </div>

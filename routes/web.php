@@ -11,4 +11,5 @@ Route::get('/', function () {
 
 Route::get('wp-admin/login', [LoginController::class, 'login'])->name('login');
 Route::post('wp-admin/login', [LoginController::class, 'submit'])->name('login');
+Route::delete('wp-admin/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/wp-admin', [DashboardController::class, 'index'])->name('wpadmin.dashboard')->middleware('auth');

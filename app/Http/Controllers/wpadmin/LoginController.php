@@ -25,4 +25,12 @@ class LoginController extends Controller
 
         return redirect()->route('login')->with('message', 'Username atau password salah');
     }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return to_route('login');
+    }
 }
