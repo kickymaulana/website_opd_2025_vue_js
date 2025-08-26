@@ -44,11 +44,12 @@ onMounted(() => {
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                                     <li><Link class="dropdown-item" :href="`/wp-admin/tema/${tema.id}/edit`">Edit</Link></li>
-                                    <li>
+
+                                    <li v-if="tema.status === 'nonaktif'">
                                         <a class="dropdown-item" data-bs-toggle="modal"
                                             data-bs-target="#aktifkan">Akfifkan</a>
                                     </li>
-                                    <li>
+                                    <li v-if="tema.status === 'aktif'">
                                         <a class="dropdown-item" data-bs-toggle="modal"
                                             data-bs-target="#nonaktifkan">Non Akftikan</a>
                                     </li>
@@ -137,7 +138,7 @@ onMounted(() => {
                                 </div>
                             <form wire:submit="update">
                                 <div class="form-floating mb-3">
-                                    <p class="form-control">{{ tema.tema }}</p>
+                                    <p class="form-control bg-light">{{ tema.tema }}</p>
                                     <label for="tema">Tema</label>
                                 </div>
 
