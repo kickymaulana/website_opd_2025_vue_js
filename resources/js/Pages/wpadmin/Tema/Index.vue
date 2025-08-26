@@ -94,7 +94,7 @@ onMounted(() => {
                                         <td>{{ item.tema }}</td>
                                         <td>{{ item.status }}</td>
                                         <td class="text-end">
-                                            <Link href="#" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
+                                            <Link :href="`/wp-admin/tema/${ item.id }/show`" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>
