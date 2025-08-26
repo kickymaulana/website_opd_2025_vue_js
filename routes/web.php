@@ -16,3 +16,4 @@ Route::delete('wp-admin/logout', [LoginController::class, 'logout'])->name('logo
 Route::get('/wp-admin', [DashboardController::class, 'index'])->name('wpadmin.dashboard')->middleware('auth');
 Route::get('/wp-admin/tema/index', [TemaController::class, 'index'])->name('wpadmin.tema.index')->middleware('auth');
 Route::get('/wp-admin/tema/create', [TemaController::class, 'create'])->name('wpadmin.tema.create')->middleware('auth');
+Route::post('/wp-admin/tema/create', [TemaController::class, 'store'])->name('wpadmin.tema.store')->middleware('auth');

@@ -25,4 +25,17 @@ class TemaController extends Controller
     {
         return inertia('wpadmin/Tema/Create');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'tema' => 'required|string|max:255',
+        ]);
+
+        Tema::create([
+            'tema' => $request->tema,
+        ]);
+
+        return redirect()->route('wpadmin.tema.index')->with('success', 'Tema berhasil ditambahkan.');
+    }
 }

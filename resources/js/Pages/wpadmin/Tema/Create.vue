@@ -9,6 +9,7 @@ defineOptions({ layout: AppLayout })
 const form = useForm({
     tema: null,
 })
+
 </script>
 <template>
     <div>
@@ -26,14 +27,14 @@ const form = useForm({
                                         class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
                                     <h5 class="card-title">Tema Create</h5>
                                 </div>
-                                <form wire:submit="simpan">
+                                <form @submit.prevent="form.post('/wp-admin/tema/create')">
                                     <div class="form-floating mb-3">
-                                        <input wire:model="tema" type="text"
-                                            class="form-control @error('tema') is-invalid @enderror" id="tema"
+                                        <input v-model="form.tema" type="text"
+                                            class="form-control" :class="{ 'is-invalid': form.errors.tema }" id="tema"
                                             placeholder="Tema">
                                         <label for="tema">Tema</label>
-                                        <div class="invalid-tooltip" v-if="form.errors.tema">
-                                            {{ $message }}
+                                        <div class="invalid-feedback" v-if="form.errors.tema">
+                                            {{ form.errors.tema }}
                                         </div>
                                     </div>
 
