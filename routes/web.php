@@ -22,3 +22,4 @@ Route::get('/wp-admin/tema/{id}/edit', [TemaController::class, 'edit'])->name('w
 Route::patch('/wp-admin/tema/{id}/edit', [TemaController::class, 'update'])->name('wpadmin.tema.edit')->middleware('auth');
 Route::patch('/wp-admin/tema/{id}/aktifkan', [TemaController::class, 'aktifkan'])->name('wpadmin.tema.aktifkan')->middleware('auth');
 Route::patch('/wp-admin/tema/{id}/nonaktifkan', [TemaController::class, 'nonaktifkan'])->name('wpadmin.tema.nonaktifkan')->middleware('auth');
+Route::delete('/wp-admin/tema/{id}/hapus', [TemaController::class, 'hapus'])->name('wpadmin.tema.hapus')->middleware('auth');

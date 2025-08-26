@@ -78,7 +78,7 @@ onMounted(() => {
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary"
-                                                    wire:click="hapus">Yakin</button>
+                                                    @click="form.delete(`/wp-admin/tema/${tema.id}/hapus`)" data-bs-dismiss="modal">Yakin</button>
                                             </div>
                                         </div>
                                     </div>

@@ -95,4 +95,15 @@ class TemaController extends Controller
         ]);
         return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil dinonaktifkan.');
     }
+
+    public function hapus($id)
+    {
+        $tema = Tema::findOrFail($id);
+        if($tema->status == 'aktif'){
+            return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema yang aktif tidak bisa dihapus.');
+        } else {
+            $tema->delete();
+            return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil dihapus.');
+        }
+    }
 }
