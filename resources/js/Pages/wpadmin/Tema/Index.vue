@@ -17,19 +17,19 @@ const props = defineProps({
 });
 
 onMounted(() => {
-        window.setTimeout(function() {
-            var alerts = document.querySelectorAll('.alert');
-            alerts.forEach(function(alert) {
-                alert.style.transition = 'opacity 500ms, height 200ms';
-                alert.style.opacity = '0';
-                alert.style.height = '0';
+    window.setTimeout(function() {
+        var alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            alert.style.transition = 'opacity 500ms, height 200ms';
+            alert.style.opacity = '0';
+            alert.style.height = '0';
 
-                // Menghapus elemen setelah animasi selesai
-                alert.addEventListener('transitionend', function() {
-                    alert.remove();
-                });
+            // Menghapus elemen setelah animasi selesai
+            alert.addEventListener('transitionend', function() {
+                alert.remove();
             });
-        }, 2000);
+        });
+    }, 2000);
     console.log(props.list_tema);
 });
 
@@ -57,12 +57,12 @@ onMounted(() => {
                             </div>
 
 
-                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                                    <i class="bi bi-check-circle me-1"></i>
+                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                <i class="bi bi-check-circle me-1"></i>
                                 <p>pesan</p>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
 
 
 
@@ -76,16 +76,32 @@ onMounted(() => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <tr v-for="(item, index) in list_tema.data" :key="index">
+                                    <tr v-for="(item, index) in list_tema.data" :key="index">
                                         <td>{{ item.tema }}</td>
-                                            <td>status</td>
-                                            <td class="text-end">
+                                        <td>status</td>
+                                        <td class="text-end">
                                             <Link href="#" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
-                                            </td>
-                                        </tr>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <!-- End Table with hoverable rows -->
+
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item" :class="{'active' : link.active }" aria-current="page" v-for="link in list_tema.meta.links" :key="link.label">
+                                        <a class="page-link" href="#">{{ link.label }}</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
 
                         </div>
                     </div>
