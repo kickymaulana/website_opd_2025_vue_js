@@ -1,10 +1,102 @@
 <script setup>
 import AppLayout from '../../../Layouts/AppLayout.vue'
+import { ref, onMounted, watch } from 'vue'
+import { router } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
+
 defineOptions({ layout: AppLayout })
+
+const cari = ref('');
+
+watch(cari, (nilaibaru, nilaiawal) => {
+    router.get('/wp-admin/tema/index', { cari: nilaibaru }, { preserveState: true, replace: true });
+});
+
+const props = defineProps({
+    list_tema: Object,
+});
+
+onMounted(() => {
+        window.setTimeout(function() {
+            var alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                alert.style.transition = 'opacity 500ms, height 200ms';
+                alert.style.opacity = '0';
+                alert.style.height = '0';
+
+                // Menghapus elemen setelah animasi selesai
+                alert.addEventListener('transitionend', function() {
+                    alert.remove();
+                });
+            });
+        }, 2000);
+    console.log(props.list_tema);
+});
+
 
 </script>
 <template>
-    <div>
+    <main id="main" class="main">
 
-    </div>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tema</h5>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control"
+                                        id="cari" placeholder="Cari data" v-model="cari">
+                                    <p>{{ cari }}</p>
+                                </div>
+                                <div class="d-flex">
+                                    <a
+                                        class="btn btn-primary btn-sm">Tambah</a>
+                                </div>
+                            </div>
+
+
+                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                    <i class="bi bi-check-circle me-1"></i>
+                                <p>pesan</p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+
+
+
+                            <!-- Table with hoverable rows -->
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tema</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr v-for="(item, index) in list_tema" :key="index">
+                                        <td>{{ item.tema }}</td>
+                                            <td>status</td>
+                                            <td class="text-end">
+                                            <Link href="#" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <!-- End Table with hoverable rows -->
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
 </template>
