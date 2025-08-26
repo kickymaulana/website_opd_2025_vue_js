@@ -32,7 +32,7 @@ import { Link } from '@inertiajs/vue3'
             </li><!-- End Icons Nav -->
 
             <li class="nav-item">
-                <Link class="nav-link collapsed" href="wp-admin/tema/index">
+                <Link class="nav-link collapsed" href="/wp-admin/tema/index">
                     <i class="bi bi-menu-button-wide"></i>
                     <span>
                         Tema

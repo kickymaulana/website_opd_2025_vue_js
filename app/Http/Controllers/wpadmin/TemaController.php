@@ -20,4 +20,9 @@ class TemaController extends Controller
         ]);
 
     }
+
+    public function create()
+    {
+        return inertia('wpadmin/Tema/Create');
+    }
 }
