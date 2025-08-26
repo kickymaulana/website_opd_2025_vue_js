@@ -50,4 +50,26 @@ class TemaController extends Controller
             'tema' => $tema,
         ]);
     }
+
+    public function edit($id)
+    {
+        $tema = Tema::findOrFail($id);
+        return inertia('wpadmin/Tema/Edit', [
+            'tema' => $tema,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'tema' => 'required|string|max:255',
+        ]);
+
+        $tema = Tema::findOrFail($id);
+        $tema->update([
+            'tema' => $request->tema,
+        ]);
+
+        return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil diperbarui.');
+    }
 }

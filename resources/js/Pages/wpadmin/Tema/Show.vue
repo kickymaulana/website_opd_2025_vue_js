@@ -10,6 +10,23 @@ const props = defineProps({
     tema: Object,
 });
 
+onMounted(() => {
+    window.setTimeout(function() {
+        var alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            alert.style.transition = 'opacity 500ms, height 200ms';
+            alert.style.opacity = '0';
+            alert.style.height = '0';
+
+            // Menghapus elemen setelah animasi selesai
+            alert.addEventListener('transitionend', function() {
+                alert.remove();
+            });
+        });
+    }, 2000);
+    console.log(props.list_tema);
+});
+
 </script>
 <template>
     <main id="main" class="main">
@@ -26,7 +43,7 @@ const props = defineProps({
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                    <li><Link class="dropdown-item" :href="`/wp-admin/tema/${tema.id}/edit`">Edit</Link></li>
                                     <li>
                                         <a class="dropdown-item" data-bs-toggle="modal"
                                             data-bs-target="#aktifkan">Akfifkan</a>
@@ -112,6 +129,12 @@ const props = defineProps({
                                     class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
                                 <h5 class="card-title">Detail Tema</h5>
                             </div>
+                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" v-if="$page.props.flash.message">
+                                    <i class="bi bi-check-circle me-1"></i>
+                                    {{ $page.props.flash.message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
                             <form wire:submit="update">
                                 <div class="form-floating mb-3">
                                     <p class="form-control">{{ tema.tema }}</p>

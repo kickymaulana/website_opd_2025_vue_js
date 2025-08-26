@@ -18,3 +18,5 @@ Route::get('/wp-admin/tema/index', [TemaController::class, 'index'])->name('wpad
 Route::get('/wp-admin/tema/create', [TemaController::class, 'create'])->name('wpadmin.tema.create')->middleware('auth');
 Route::post('/wp-admin/tema/create', [TemaController::class, 'store'])->name('wpadmin.tema.store')->middleware('auth');
 Route::get('/wp-admin/tema/{id}/show', [TemaController::class, 'show'])->name('wpadmin.tema.show')->middleware('auth');
+Route::get('/wp-admin/tema/{id}/edit', [TemaController::class, 'edit'])->name('wpadmin.tema.edit')->middleware('auth');
+Route::patch('/wp-admin/tema/{id}/edit', [TemaController::class, 'update'])->name('wpadmin.tema.edit')->middleware('auth');
