@@ -72,4 +72,27 @@ class TemaController extends Controller
 
         return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil diperbarui.');
     }
+
+    public function aktifkan($id)
+    {
+        $tema = Tema::findOrFail($id);
+        if(Tema::where('status', 'aktif')->count() >= 1){
+            return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Masih ada tema yang aktif');
+        } else {
+            $tema->update([
+                'status' => 'aktif',
+            ]);
+            return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil diaktifkan.');
+        }
+
+    }
+
+    public function nonaktifkan($id)
+    {
+        $tema = Tema::findOrFail($id);
+        $tema->update([
+            'status' => 'nonaktif',
+        ]);
+        return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil dinonaktifkan.');
+    }
 }

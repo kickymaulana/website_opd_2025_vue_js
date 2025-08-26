@@ -3,12 +3,15 @@ import AppLayout from '../../../Layouts/AppLayout.vue'
 import { ref, onMounted, watch } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { Link } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
 
 defineOptions({ layout: AppLayout })
 
 const props = defineProps({
     tema: Object,
 });
+
+const form = useForm({})
 
 onMounted(() => {
     window.setTimeout(function() {
@@ -96,7 +99,7 @@ onMounted(() => {
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary"
-                                                    wire:click="aktifkan">Yakin</button>
+                                                    @click="form.patch(`/wp-admin/tema/${tema.id}/aktifkan`)" data-bs-dismiss="modal">Yakin</button>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +120,7 @@ onMounted(() => {
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary"
-                                                    wire:click="nonaktifkan">Yakin</button>
+                                                    @click="form.patch(`/wp-admin/tema/${tema.id}/nonaktifkan`)" data-bs-dismiss="modal">Yakin</button>
                                             </div>
                                         </div>
                                     </div>
@@ -140,6 +143,10 @@ onMounted(() => {
                                 <div class="form-floating mb-3">
                                     <p class="form-control bg-light">{{ tema.tema }}</p>
                                     <label for="tema">Tema</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <p class="form-control bg-light">{{ tema.status }}</p>
+                                    <label for="tema">Status</label>
                                 </div>
 
                                 <br>
