@@ -42,4 +42,12 @@ class TemaController extends Controller
 
         return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil ditambahkan.');
     }
+
+    public function show($id)
+    {
+        $tema = Tema::findOrFail($id);
+        return inertia('wpadmin/Tema/Show', [
+            'tema' => $tema,
+        ]);
+    }
 }

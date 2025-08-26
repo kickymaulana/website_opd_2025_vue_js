@@ -1,3 +1,16 @@
+<script setup>
+import AppLayout from '../../../Layouts/AppLayout.vue'
+import { ref, onMounted, watch } from 'vue'
+import { router } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
+
+defineOptions({ layout: AppLayout })
+
+const props = defineProps({
+    tema: Object,
+});
+
+</script>
 <template>
     <main id="main" class="main">
 
@@ -95,13 +108,13 @@
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <a wire:navigate href="#"
-                                    class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</a>
+                                <Link href="/wp-admin/tema/index"
+                                    class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
                                 <h5 class="card-title">Detail Tema</h5>
                             </div>
                             <form wire:submit="update">
                                 <div class="form-floating mb-3">
-                                    <p class="form-control">tema</p>
+                                    <p class="form-control">{{ tema.tema }}</p>
                                     <label for="tema">Tema</label>
                                 </div>
 
