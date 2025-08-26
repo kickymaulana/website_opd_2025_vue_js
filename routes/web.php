@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\wpadmin\LoginController;
 use App\Http\Controllers\wpadmin\DashboardController;
 use App\Http\Controllers\wpadmin\TemaController;
+use App\Http\Controllers\wpadmin\HiasanController;
 
 Route::get('/', function () {
     return Inertia::render('HelloWorld');
@@ -23,3 +24,5 @@ Route::patch('/wp-admin/tema/{id}/edit', [TemaController::class, 'update'])->nam
 Route::patch('/wp-admin/tema/{id}/aktifkan', [TemaController::class, 'aktifkan'])->name('wpadmin.tema.aktifkan')->middleware('auth');
 Route::patch('/wp-admin/tema/{id}/nonaktifkan', [TemaController::class, 'nonaktifkan'])->name('wpadmin.tema.nonaktifkan')->middleware('auth');
 Route::delete('/wp-admin/tema/{id}/hapus', [TemaController::class, 'hapus'])->name('wpadmin.tema.hapus')->middleware('auth');
+
+Route::get('/wp-admin/hiasan/{tema_id}/index', [HiasanController::class, 'index'])->name('wpadmin.hiasan.index')->middleware('auth');

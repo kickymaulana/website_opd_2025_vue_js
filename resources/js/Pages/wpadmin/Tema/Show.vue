@@ -153,7 +153,7 @@ onMounted(() => {
                                 <br>
 
                             </form>
-                            <a class="btn btn-primary" href="#">Hiasan</a>
+                            <a class="btn btn-primary" :href="`/wp-admin/hiasan/${tema.id}/index`">Hiasan</a>
 
                         </div>
                     </div>
