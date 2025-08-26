@@ -89,16 +89,13 @@ onMounted(() => {
 
                             <nav aria-label="...">
                                 <ul class="pagination">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item" :class="{'active' : link.active }" aria-current="page" v-for="link in list_tema.meta.links" :key="link.label">
-                                        <a class="page-link" href="#">{{ link.label }}</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
+                                    <li class="page-item" :class="{
+                                        'active' : link.active,
+                                        'disabled' : !link.url
+                                    }" aria-current="page" v-for="link in list_tema.meta.links" :key="link.label">
+                                        <Link class="page-link" :href="link.url ?? '#'">
+                                            <span v-html="link.label"></span>
+                                        </Link>
                                     </li>
                                 </ul>
                             </nav>

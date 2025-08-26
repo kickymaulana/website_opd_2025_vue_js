@@ -16,8 +16,8 @@ class TemaController extends Controller
         if($cari){
             $query->where('tema', 'LIKE', '%'.$cari.'%');
         }
-        $test = TemaResource::collection($query->orderByDesc('created_at')->paginate(10));
-        return $test;
+        /* $test = TemaResource::collection($query->orderByDesc('created_at')->paginate(10)); */
+        /* return $test; */
         return inertia('wpadmin/Tema/Index', [
             'list_tema' => TemaResource::collection($query->orderByDesc('created_at')->paginate(10)),
         ]);
