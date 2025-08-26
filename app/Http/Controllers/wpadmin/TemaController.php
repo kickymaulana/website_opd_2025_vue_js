@@ -5,6 +5,7 @@ namespace App\Http\Controllers\wpadmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\wpadmin\Tema;
+use App\Http\Resources\wpadmin\TemaResource;
 
 class TemaController extends Controller
 {
@@ -16,7 +17,7 @@ class TemaController extends Controller
             $query->where('tema', 'LIKE', '%'.$cari.'%');
         }
         return inertia('wpadmin/Tema/Index', [
-            'list_tema' => $query->orderByDesc('created_at')->get(),
+            'list_tema' => TemaResource::collection($query->orderByDesc('created_at')->paginate(10)),
         ]);
 
     }

@@ -76,7 +76,7 @@ onMounted(() => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <tr v-for="(item, index) in list_tema" :key="index">
+                                        <tr v-for="(item, index) in list_tema.data" :key="index">
                                         <td>{{ item.tema }}</td>
                                             <td>status</td>
                                             <td class="text-end">
