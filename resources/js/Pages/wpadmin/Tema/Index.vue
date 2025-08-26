@@ -92,7 +92,7 @@ onMounted(() => {
                                 <tbody>
                                     <tr v-for="(item, index) in list_tema.data" :key="index">
                                         <td>{{ item.tema }}</td>
-                                        <td>status</td>
+                                        <td>{{ item.status }}</td>
                                         <td class="text-end">
                                             <Link href="#" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
                                         </td>
