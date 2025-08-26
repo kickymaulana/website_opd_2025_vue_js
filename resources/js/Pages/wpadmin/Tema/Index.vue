@@ -50,7 +50,6 @@ onMounted(() => {
                                 <div class="col-md-2">
                                     <input type="text" class="form-control"
                                         id="cari" placeholder="Cari data" v-model="cari">
-                                    <p>{{ cari }}</p>
                                 </div>
                                 <div class="d-flex">
                                     <a

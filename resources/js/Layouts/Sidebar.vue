@@ -1,3 +1,6 @@
+<script setup>
+import { Link } from '@inertiajs/vue3'
+</script>
 <template>
     <aside id="sidebar" class="sidebar">
 
@@ -29,12 +32,12 @@
             </li><!-- End Icons Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" wire:navigate="true">
+                <Link class="nav-link collapsed" href="wp-admin/tema/index">
                     <i class="bi bi-menu-button-wide"></i>
                     <span>
                         Tema
                     </span>
-                </a>
+                </Link>
             </li>
 
             <li class="nav-item">
