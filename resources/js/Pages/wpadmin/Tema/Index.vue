@@ -27,6 +27,7 @@ const getPaginationUrl = (url) => {
 
 const props = defineProps({
     list_tema: Object,
+    cari: String,
 });
 
 onMounted(() => {
@@ -70,9 +71,9 @@ onMounted(() => {
                             </div>
 
 
-                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" v-if="$page.props.flash.message">
                                 <i class="bi bi-check-circle me-1"></i>
-                                <p>pesan</p>
+                                {{ $page.props.flash.message }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>

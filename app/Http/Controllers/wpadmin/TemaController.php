@@ -20,6 +20,7 @@ class TemaController extends Controller
         /* return $test; */
         return inertia('wpadmin/Tema/Index', [
             'list_tema' => TemaResource::collection($query->orderByDesc('created_at')->paginate(10)),
+            'cari' => $cari,
         ]);
 
     }
@@ -39,6 +40,6 @@ class TemaController extends Controller
             'tema' => $request->tema,
         ]);
 
-        return redirect()->route('wpadmin.tema.index')->with('success', 'Tema berhasil ditambahkan.');
+        return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil ditambahkan.');
     }
 }
