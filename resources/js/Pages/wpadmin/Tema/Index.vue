@@ -12,6 +12,19 @@ watch(cari, (nilaibaru, nilaiawal) => {
     router.get('/wp-admin/tema/index', { cari: nilaibaru }, { preserveState: true, replace: true });
 });
 
+// Fungsi untuk membuat URL pagination dengan parameter cari
+const getPaginationUrl = (url) => {
+    if (!url) return '#';
+
+    // Jika ada parameter cari, tambahkan ke URL pagination
+    if (cari.value) {
+        const separator = url.includes('?') ? '&' : '?';
+        return `${url}${separator}cari=${encodeURIComponent(cari.value)}`;
+    }
+
+    return url;
+};
+
 const props = defineProps({
     list_tema: Object,
 });
@@ -93,7 +106,7 @@ onMounted(() => {
                                         'active' : link.active,
                                         'disabled' : !link.url
                                     }" aria-current="page" v-for="link in list_tema.meta.links" :key="link.label">
-                                        <Link class="page-link" :href="link.url ?? '#'">
+                                        <Link class="page-link" :href="getPaginationUrl(link.url)">
                                             <span v-html="link.label"></span>
                                         </Link>
                                     </li>
