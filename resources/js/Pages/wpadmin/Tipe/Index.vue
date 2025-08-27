@@ -9,7 +9,7 @@ defineOptions({ layout: AppLayout })
 const cari = ref('');
 
 watch(cari, (nilaibaru, nilaiawal) => {
-    router.get('/wp-admin/hiasan/index', { cari: nilaibaru }, { preserveState: true, replace: true });
+    router.get('/wp-admin/tipe/index', { cari: nilaibaru }, { preserveState: true, replace: true });
 });
 
 // Fungsi untuk membuat URL pagination dengan parameter cari
