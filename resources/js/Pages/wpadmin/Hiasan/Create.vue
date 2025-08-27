@@ -19,6 +19,11 @@ const form = useForm({
     urutan: null,
 })
 
+function submit() {
+    form.hiasan = editAreaLoader.getValue('editor');
+    form.post(`/wp-admin/hiasan/${props.tema.id}/create`)
+}
+
 const editorInitialized = ref(false);
 
 onMounted(() => {
@@ -36,17 +41,6 @@ onMounted(() => {
         ,replace_tab_by_spaces: 2
         ,font_family: 'verdana',
 
-        //event handler manual tanpa model
-        onchange: function() {
-            form.hiasan = editAreaLoader.getValue('editor');
-        },
-
-        onload: function() {
-            editorInitialized.value = true;
-            if (form.hiasan) {
-                editAreaLoader.setValue('editor', form.hiasan);
-            }
-        }
     });
 });
 
@@ -66,7 +60,7 @@ onMounted(() => {
                                     class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
                                 <h5 class="card-title">Hiasan Create </h5>
                             </div>
-                            <form @submit.prevent="form.post(`/wp-admin/hiasan/${props.tema.id}/create`)">
+                            <form @submit.prevent="submit">
                                 <div class="form-floating mb-3">
                                     <input v-model="form.nama" type="text"
                                         class="form-control" :class="{ 'is-invalid': form.errors.nama }" id="nama"
