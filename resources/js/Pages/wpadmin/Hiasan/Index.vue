@@ -12,10 +12,11 @@ const props = defineProps({
     tema: Object,
 });
 
+
 const cari = ref('');
 
 watch(cari, (nilaibaru, nilaiawal) => {
-    router.get(`/wp-admin/hiasan/${tema.id}/index`, { cari: nilaibaru }, { preserveState: true, replace: true });
+    router.get(`/wp-admin/hiasan/${props.tema.id}/index`, { cari: nilaibaru }, { preserveState: true, replace: true });
 });
 
 // Fungsi untuk membuat URL pagination dengan parameter cari
