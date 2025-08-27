@@ -59,10 +59,25 @@ onMounted(() => {
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <Link :href="`/wp-admin/hiasan/${props.tema.id}/index`"
-                                    class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
-                                <h5 class="card-title">Hiasan Edit </h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <Link :href="`/wp-admin/hiasan/${props.tema.id}/index`"
+                                        class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
+                                    <h5 class="card-title">Hiasan Edit </h5>
+                                </div>
+                                <div class="dropdown">
+                                    <span class="" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </span>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <button class="dropdown-item text-danger" data-bs-toggle="modal"
+                                                data-bs-target="#hapus" >
+                                                <i class="bi bi-trash me-2"></i> Hapus
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" v-if="$page.props.flash.message">
                                 <i class="bi bi-check-circle me-1"></i>
