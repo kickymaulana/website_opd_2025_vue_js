@@ -27,3 +27,4 @@ Route::delete('/wp-admin/tema/{id}/hapus', [TemaController::class, 'hapus'])->na
 
 Route::get('/wp-admin/hiasan/{tema_id}/index', [HiasanController::class, 'index'])->name('wpadmin.hiasan.index')->middleware('auth');
 Route::get('/wp-admin/hiasan/{tema_id}/create', [HiasanController::class, 'create'])->name('wpadmin.hiasan.create')->middleware('auth');
+Route::post('/wp-admin/hiasan/{tema_id}/create', [HiasanController::class, 'store'])->name('wpadmin.hiasan.store')->middleware('auth');
