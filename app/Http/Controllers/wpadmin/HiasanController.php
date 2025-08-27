@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\wpadmin\Tema;
 use App\Models\wpadmin\Hiasan;
+use App\Models\wpadmin\Tipe;
 use App\Http\Resources\wpadmin\HiasanResource;
 
 class HiasanController extends Controller
@@ -29,24 +30,28 @@ class HiasanController extends Controller
     public function create($tema_id)
     {
         $tema = Tema::findOrFail($tema_id);
+        $tipe = Tipe::all();
         return inertia('wpadmin/Hiasan/Create', [
             'tema' => $tema,
+            'tipe' => $tipe,
         ]);
     }
 
-    /* public function store(Request $request) */
-    /* { */
-    /*     $request->validate([ */
-    /*         'tema' => 'required|string|max:255', */
-    /*     ]); */
-    /**/
-    /*     Tema::create([ */
-    /*         'tema' => $request->tema, */
-    /*     ]); */
-    /**/
-    /*     return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil ditambahkan.'); */
-    /* } */
-    /**/
+    public function store(Request $request, $tema_id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'hiasan' => 'required',
+            'urutan' => 'required|numeric',
+            'tipe_id' => 'required|uuid',
+            'tema_id' => 'required|uuid',
+        ]);
+
+        Hiasan::create($request->all());
+
+        return redirect()->route('wpadmin.hiasan.index', ['tema_id' => $tema_id])->with('message', 'Tema berhasil ditambahkan.');
+    }
+
     /* public function show($id) */
     /* { */
     /*     $tema = Tema::findOrFail($id); */
