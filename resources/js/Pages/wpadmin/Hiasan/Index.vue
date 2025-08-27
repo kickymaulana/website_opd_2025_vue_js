@@ -94,7 +94,7 @@ onMounted(() => {
                                     <tr v-for="(item, index) in list_hiasan.data" :key="index">
                                         <td>{{ item.nama }}</td>
                                         <td class="text-end">
-                                            <Link :href="`/wp-admin/hiasan/${ item.id }/show`" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
+                                            <Link :href="`/wp-admin/hiasan/${ tema.id }/${item.id}/edit`" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>

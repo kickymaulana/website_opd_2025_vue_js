@@ -54,37 +54,34 @@ class HiasanController extends Controller
         return redirect()->route('wpadmin.hiasan.index', ['tema_id' => $tema_id])->with('message', 'Tema berhasil ditambahkan.');
     }
 
-    /* public function show($id) */
-    /* { */
-    /*     $tema = Tema::findOrFail($id); */
-    /*     return inertia('wpadmin/Tema/Show', [ */
-    /*         'tema' => $tema, */
-    /*     ]); */
-    /* } */
-    /**/
-    /* public function edit($id) */
-    /* { */
-    /*     $tema = Tema::findOrFail($id); */
-    /*     return inertia('wpadmin/Tema/Edit', [ */
-    /*         'tema' => $tema, */
-    /*     ]); */
-    /* } */
-    /**/
-    /* public function update(Request $request, $id) */
-    /* { */
-    /*     $request->validate([ */
-    /*         'tema' => 'required|string|max:255', */
-    /*     ]); */
-    /**/
-    /*     $tema = Tema::findOrFail($id); */
-    /*     $tema->update([ */
-    /*         'tema' => $request->tema, */
-    /*     ]); */
-    /**/
-    /*     return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil diperbarui.'); */
-    /* } */
-    /**/
-    /**/
+    public function edit($tema_id, $id)
+    {
+        $tema = Tema::findOrFail($tema_id);
+        $hiasan = Hiasan::findOrFail($id);
+        $tipe = Tipe::all();
+        return inertia('wpadmin/Hiasan/Edit', [
+            'tema' => $tema,
+            'hiasan' => $hiasan,
+            'tipe' => $tipe,
+        ]);
+    }
+
+    public function update(Request $request, $tema_id, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'hiasan' => 'required',
+            'urutan' => 'required|numeric',
+            'tipe_id' => 'required|uuid',
+        ]);
+
+
+        $hiasan = Hiasan::findOrFail($id);
+        $hiasan->update($request->all());
+
+        return redirect()->route('wpadmin.hiasan.edit', ['tema_id' => $tema_id, 'id' => $id])->with('message', 'Hiasan berhasil diupdate.');
+    }
+
     /* public function hapus($id) */
     /* { */
     /*     $tema = Tema::findOrFail($id); */
