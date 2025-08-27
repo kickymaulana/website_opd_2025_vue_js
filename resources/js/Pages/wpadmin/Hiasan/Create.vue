@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/vue3'
 import AppLayout from '../../../Layouts/AppLayout.vue'
 import { useForm } from '@inertiajs/vue3'
 import { router } from '@inertiajs/vue3'
+import { onMounted} from 'vue'
 
 defineOptions({ layout: AppLayout })
 
@@ -17,6 +18,23 @@ const form = useForm({
     tipe_id: 'kosong',
     urutan: null,
 })
+
+onMounted(() => {
+    editAreaLoader.init({
+        id : 'editor'		// textarea id
+        ,syntax: 'html'			// syntax to be uses for highgliting
+        ,start_highlight: true		// to display with highlight mode on start-up
+        ,fullscreen: false
+        ,toolbar: 'fullscreen, search, go_to_line, syntax_selection, |, undo, redo, |, select_font,|, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help'
+        ,replace_tab_by_spaces: 2
+        ,allow_toggle: false
+        ,min_height:400
+        ,font_size:12
+        ,gecko_spellcheck: true
+        ,replace_tab_by_spaces: 2
+        ,font_family: 'verdana',
+    });
+});
 
 </script>
 <template>
@@ -48,7 +66,6 @@ const form = useForm({
                                     <textarea class="form-control" :class="{ 'is-invalid': form.errors.hiasan }"
                                         id="editor" placeholder="Hiasan" v-model="form.hiasan"
                                     ></textarea>
-                                    <label for="editor">Hiasan</label>
                                     <div class="invalid-feedback" v-if="form.errors.hiasan">
                                         {{ form.errors.hiasan }}
                                     </div>
