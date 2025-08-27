@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3'
 import AppLayout from '../../../Layouts/AppLayout.vue'
 import { useForm } from '@inertiajs/vue3'
 import { router } from '@inertiajs/vue3'
-import { onMounted} from 'vue'
+import { onMounted, ref } from 'vue'
 
 defineOptions({ layout: AppLayout })
 
@@ -19,6 +19,8 @@ const form = useForm({
     urutan: null,
 })
 
+const editorInitialized = ref(false);
+
 onMounted(() => {
     editAreaLoader.init({
         id : 'editor'		// textarea id
@@ -33,6 +35,18 @@ onMounted(() => {
         ,gecko_spellcheck: true
         ,replace_tab_by_spaces: 2
         ,font_family: 'verdana',
+
+        //event handler manual tanpa model
+        onchange: function() {
+            form.hiasan = editAreaLoader.getValue('editor');
+        },
+
+        onload: function() {
+            editorInitialized.value = true;
+            if (form.hiasan) {
+                editAreaLoader.setValue('editor', form.hiasan);
+            }
+        }
     });
 });
 
