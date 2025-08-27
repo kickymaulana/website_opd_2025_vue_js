@@ -41,10 +41,10 @@ import { Link } from '@inertiajs/vue3'
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" wire:navigate="true">
+                <Link class="nav-link collapsed" :href="`/wp-admin/hiasan/${$page.props.tema_aktif.id}/index`" wire:navigate="true">
                     <i class="bi bi-bar-chart"></i>
                     <span>Hiasan</span>
-                </a>
+                </Link>
             </li>
 
             <li class="nav-item">
