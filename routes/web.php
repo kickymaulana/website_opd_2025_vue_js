@@ -26,3 +26,4 @@ Route::patch('/wp-admin/tema/{id}/nonaktifkan', [TemaController::class, 'nonakti
 Route::delete('/wp-admin/tema/{id}/hapus', [TemaController::class, 'hapus'])->name('wpadmin.tema.hapus')->middleware('auth');
 
 Route::get('/wp-admin/hiasan/{tema_id}/index', [HiasanController::class, 'index'])->name('wpadmin.hiasan.index')->middleware('auth');
+Route::get('/wp-admin/hiasan/{tema_id}/create', [HiasanController::class, 'create'])->name('wpadmin.hiasan.create')->middleware('auth');

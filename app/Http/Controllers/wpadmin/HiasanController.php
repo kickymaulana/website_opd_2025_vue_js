@@ -26,11 +26,14 @@ class HiasanController extends Controller
 
     }
 
-    /* public function create() */
-    /* { */
-    /*     return inertia('wpadmin/Tema/Create'); */
-    /* } */
-    /**/
+    public function create($tema_id)
+    {
+        $tema = Tema::findOrFail($tema_id);
+        return inertia('wpadmin/Hiasan/Create', [
+            'tema' => $tema,
+        ]);
+    }
+
     /* public function store(Request $request) */
     /* { */
     /*     $request->validate([ */
