@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\wpadmin\Tema;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -35,11 +36,27 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
+        // Ambil tema aktif
+        $temaAktif = Tema::where('status', 'aktif')->first();
+
+        // Jika tidak ada tema aktif, ambil tema pertama atau null
+        if (!$temaAktif) {
+            $temaAktif = Tema::first();
+        }
+
+
         return [
             ...parent::share($request),
             'flash' => [
                 'message' => fn () => $request->session()->get('message')
             ],
+            'tema_aktif' => $temaAktif ? [
+                'id' => $temaAktif->id,
+                'nama' => $temaAktif->tema,
+                'status' => $temaAktif->status,
+                // tambahkan field lain yang diperlukan
+            ] : null,
         ];
     }
 }

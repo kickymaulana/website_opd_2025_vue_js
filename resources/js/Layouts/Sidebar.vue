@@ -35,7 +35,7 @@ import { Link } from '@inertiajs/vue3'
                 <Link class="nav-link collapsed" href="/wp-admin/tema/index">
                     <i class="bi bi-menu-button-wide"></i>
                     <span>
-                        Tema
+                    Tema ({{ $page.props.tema_aktif.nama  }})
                     </span>
                 </Link>
             </li>
