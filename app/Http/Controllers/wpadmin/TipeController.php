@@ -25,20 +25,20 @@ class TipeController extends Controller
 
     public function create()
     {
-        return inertia('wpadmin/Tema/Create');
+        return inertia('wpadmin/Tipe/Create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'tema' => 'required|string|max:255',
+            'tipe' => 'required|string|max:255',
         ]);
 
-        Tema::create([
-            'tema' => $request->tema,
+        Tipe::create([
+            'tipe' => $request->tipe,
         ]);
 
-        return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil ditambahkan.');
+        return redirect()->route('wpadmin.tipe.index')->with('message', 'Tipe berhasil ditambahkan.');
     }
 
     public function show($id)

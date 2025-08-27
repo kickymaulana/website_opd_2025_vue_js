@@ -66,7 +66,7 @@ onMounted(() => {
                                         id="cari" placeholder="Cari data" v-model="cari">
                                 </div>
                                 <div class="d-flex">
-                                    <Link href="/wp-admin/tema/create" class="btn btn-primary btn-sm">Tambah</Link>
+                                    <Link href="/wp-admin/tipe/create" class="btn btn-primary btn-sm">Tambah</Link>
                                 </div>
                             </div>
 
