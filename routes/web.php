@@ -30,3 +30,4 @@ Route::get('/wp-admin/hiasan/{tema_id}/create', [HiasanController::class, 'creat
 Route::post('/wp-admin/hiasan/{tema_id}/create', [HiasanController::class, 'store'])->name('wpadmin.hiasan.store')->middleware('auth');
 Route::get('/wp-admin/hiasan/{tema_id}/{id}/edit', [HiasanController::class, 'edit'])->name('wpadmin.hiasan.edit')->middleware('auth');
 Route::post('/wp-admin/hiasan/{tema_id}/{id}/edit', [HiasanController::class, 'update'])->name('wpadmin.hiasan.update')->middleware('auth');
+Route::delete('/wp-admin/hiasan/{tema_id}/{id}/hapus', [HiasanController::class, 'hapus'])->name('wpadmin.hiasan.hapus')->middleware('auth');

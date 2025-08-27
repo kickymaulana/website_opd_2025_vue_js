@@ -82,14 +82,11 @@ class HiasanController extends Controller
         return redirect()->route('wpadmin.hiasan.edit', ['tema_id' => $tema_id, 'id' => $id])->with('message', 'Hiasan berhasil diupdate.');
     }
 
-    /* public function hapus($id) */
-    /* { */
-    /*     $tema = Tema::findOrFail($id); */
-    /*     if($tema->status == 'aktif'){ */
-    /*         return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema yang aktif tidak bisa dihapus.'); */
-    /*     } else { */
-    /*         $tema->delete(); */
-    /*         return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil dihapus.'); */
-    /*     } */
-    /* } */
+    public function hapus($tema_id, $id)
+    {
+        $hiasan = Hiasan::findOrFail($id);
+        $hiasan->delete();
+
+        return redirect()->route('wpadmin.hiasan.index', ['tema_id' => $tema_id])->with('message', 'Hiasan berhasil dihapus.');
+    }
 }

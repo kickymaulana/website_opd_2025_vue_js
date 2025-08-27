@@ -78,6 +78,28 @@ onMounted(() => {
                                         </li>
                                     </ul>
                                 </div>
+                                <!-- Vertically centered Modal -->
+                                <div class="modal fade" id="hapus" tabindex="-1" aria-hidden="true"
+                                    style="display: none;" data-bs-backdrop="false">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Konfirmasi Hapus data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                apakah anda yakin ingin menghapus data <b></b>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    @click="form.delete(`/wp-admin/hiasan/${tema.id}/${hiasan.id}/hapus`)" data-bs-dismiss="modal">Yakin</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End Vertically centered Modal-->
                             </div>
                             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" v-if="$page.props.flash.message">
                                 <i class="bi bi-check-circle me-1"></i>
