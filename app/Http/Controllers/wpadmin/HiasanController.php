@@ -44,8 +44,10 @@ class HiasanController extends Controller
             'hiasan' => 'required',
             'urutan' => 'required|numeric',
             'tipe_id' => 'required|uuid',
-            'tema_id' => 'required|uuid',
         ]);
+
+        $request->merge(['tema_id' => $tema_id]);
+        $request->merge(['single_page_id' => '00000000-0000-0000-0000-000000000000']);
 
         Hiasan::create($request->all());
 

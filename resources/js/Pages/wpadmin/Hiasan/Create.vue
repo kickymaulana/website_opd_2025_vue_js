@@ -15,6 +15,7 @@ const form = useForm({
     nama: null,
     hiasan: null,
     tipe_id: 'kosong',
+    urutan: null,
 })
 
 </script>
