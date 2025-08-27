@@ -6,6 +6,7 @@ use App\Http\Controllers\wpadmin\LoginController;
 use App\Http\Controllers\wpadmin\DashboardController;
 use App\Http\Controllers\wpadmin\TemaController;
 use App\Http\Controllers\wpadmin\HiasanController;
+use App\Http\Controllers\wpadmin\TipeController;
 
 Route::get('/', function () {
     return Inertia::render('HelloWorld');
@@ -31,3 +32,5 @@ Route::post('/wp-admin/hiasan/{tema_id}/create', [HiasanController::class, 'stor
 Route::get('/wp-admin/hiasan/{tema_id}/{id}/edit', [HiasanController::class, 'edit'])->name('wpadmin.hiasan.edit')->middleware('auth');
 Route::post('/wp-admin/hiasan/{tema_id}/{id}/edit', [HiasanController::class, 'update'])->name('wpadmin.hiasan.update')->middleware('auth');
 Route::delete('/wp-admin/hiasan/{tema_id}/{id}/hapus', [HiasanController::class, 'hapus'])->name('wpadmin.hiasan.hapus')->middleware('auth');
+
+Route::get('/wp-admin/tipe/index', [TipeController::class, 'index'])->name('wpadmin.tipe.index')->middleware('auth');

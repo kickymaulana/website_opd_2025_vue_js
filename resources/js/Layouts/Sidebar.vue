@@ -60,9 +60,9 @@ import { Link } from '@inertiajs/vue3'
                 </a>
                 <ul id="master" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="#" wire:navigate="true">
+                        <Link href="/wp-admin/tipe/index">
                             <i class="bi bi-circle"></i><span>Tipe</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#" wire:navigate="true">
