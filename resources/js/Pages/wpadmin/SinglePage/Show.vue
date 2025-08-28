@@ -70,7 +70,7 @@ onMounted(() => {
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary"
-                                                    @click="form.delete(`/wp-admin/tipe/${tipe.id}/delete`)" data-bs-dismiss="modal">Yakin</button>
+                                                    @click="form.delete(`/wp-admin/single-page/${single_page.id}/delete`)" data-bs-dismiss="modal">Yakin</button>
                                             </div>
                                         </div>
                                     </div>

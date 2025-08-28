@@ -70,4 +70,12 @@ class SinglePageController extends Controller
 
         return redirect()->route('wpadmin.singlepage.show', ['id' => $single_page->id])->with('message', 'Single Page berhasil diperbarui.');
     }
+
+    public function delete($id)
+    {
+        $single_page = SinglePage::findOrFail($id);
+        $single_page->delete();
+
+        return redirect()->route('wpadmin.singlepage.index')->with('message', 'Single Page berhasil dihapus.');
+    }
 }

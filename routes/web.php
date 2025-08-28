@@ -48,3 +48,4 @@ Route::post('/wp-admin/single-page/create', [SinglePageController::class, 'store
 Route::get('/wp-admin/single-page/{id}/show', [SinglePageController::class, 'show'])->name('wpadmin.singlepage.show')->middleware('auth');
 Route::get('/wp-admin/single-page/{id}/edit', [SinglePageController::class, 'edit'])->name('wpadmin.singlepage.edit')->middleware('auth');
 Route::patch('/wp-admin/single-page/{id}/edit', [SinglePageController::class, 'update'])->name('wpadmin.singlepage.update')->middleware('auth');
+Route::delete('/wp-admin/single-page/{id}/delete', [SinglePageController::class, 'delete'])->name('wpadmin.singlepage.delete')->middleware('auth');
