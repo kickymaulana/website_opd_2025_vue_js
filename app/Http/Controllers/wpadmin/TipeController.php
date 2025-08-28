@@ -43,9 +43,9 @@ class TipeController extends Controller
 
     public function show($id)
     {
-        $tema = Tema::findOrFail($id);
-        return inertia('wpadmin/Tema/Show', [
-            'tema' => $tema,
+        $tipe = Tipe::findOrFail($id);
+        return inertia('wpadmin/Tipe/Show', [
+            'tipe' => $tipe,
         ]);
     }
 

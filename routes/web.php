@@ -36,3 +36,4 @@ Route::delete('/wp-admin/hiasan/{tema_id}/{id}/hapus', [HiasanController::class,
 Route::get('/wp-admin/tipe/index', [TipeController::class, 'index'])->name('wpadmin.tipe.index')->middleware('auth');
 Route::get('/wp-admin/tipe/create', [TipeController::class, 'create'])->name('wpadmin.tipe.create')->middleware('auth');
 Route::post('/wp-admin/tipe/create', [TipeController::class, 'store'])->name('wpadmin.tipe.store')->middleware('auth');
+Route::get('/wp-admin/tipe/{id}/show', [TipeController::class, 'show'])->name('wpadmin.tipe.show')->middleware('auth');
