@@ -19,9 +19,9 @@ import { Link } from '@inertiajs/vue3'
                 </a>
                 <ul id="postingan" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="#" wire:navigate="true">
+                        <Link href="/wp-admin/artikel/index">
                             <i class="bi bi-circle"></i><span>Artikel</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#" wire:navigate="true">
