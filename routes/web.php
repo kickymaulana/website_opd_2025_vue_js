@@ -8,6 +8,7 @@ use App\Http\Controllers\wpadmin\TemaController;
 use App\Http\Controllers\wpadmin\HiasanController;
 use App\Http\Controllers\wpadmin\TipeController;
 use App\Http\Controllers\wpadmin\SinglePageController;
+use App\Http\Controllers\wpadmin\ArtikelController;
 
 Route::get('/', function () {
     return Inertia::render('HelloWorld');
@@ -49,3 +50,5 @@ Route::get('/wp-admin/single-page/{id}/show', [SinglePageController::class, 'sho
 Route::get('/wp-admin/single-page/{id}/edit', [SinglePageController::class, 'edit'])->name('wpadmin.singlepage.edit')->middleware('auth');
 Route::patch('/wp-admin/single-page/{id}/edit', [SinglePageController::class, 'update'])->name('wpadmin.singlepage.update')->middleware('auth');
 Route::delete('/wp-admin/single-page/{id}/delete', [SinglePageController::class, 'delete'])->name('wpadmin.singlepage.delete')->middleware('auth');
+
+Route::get('/wp-admin/artikel/index', [ArtikelController::class, 'index'])->name('wpadmin.artikel.index')->middleware('auth');
