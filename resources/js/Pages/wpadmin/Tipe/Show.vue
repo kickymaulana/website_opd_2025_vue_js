@@ -64,13 +64,13 @@ onMounted(() => {
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                apakah anda yakin ingin menghapus data <b wire:text="tema"></b>
+                                                apakah anda yakin ingin menghapus data <b>{{ tipe.tipe }}</b>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Batal</button>
                                                 <button type="button" class="btn btn-primary"
-                                                    @click="form.delete(`/wp-admin/tema/${tema.id}/hapus`)" data-bs-dismiss="modal">Yakin</button>
+                                                    @click="form.delete(`/wp-admin/tipe/${tipe.id}/delete`)" data-bs-dismiss="modal">Yakin</button>
                                             </div>
                                         </div>
                                     </div>

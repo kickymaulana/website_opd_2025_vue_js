@@ -71,37 +71,11 @@ class TipeController extends Controller
         return redirect()->route('wpadmin.tipe.show',['id' => $tipe->id])->with('message', 'Tipe berhasil diperbarui.');
     }
 
-    public function aktifkan($id)
-    {
-        $tema = Tema::findOrFail($id);
-        if(Tema::where('status', 'aktif')->count() >= 1){
-            return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Masih ada tema yang aktif');
-        } else {
-            $tema->update([
-                'status' => 'aktif',
-            ]);
-            return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil diaktifkan.');
-        }
 
-    }
-
-    public function nonaktifkan($id)
+    public function delete($id)
     {
-        $tema = Tema::findOrFail($id);
-        $tema->update([
-            'status' => 'nonaktif',
-        ]);
-        return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil dinonaktifkan.');
-    }
-
-    public function hapus($id)
-    {
-        $tema = Tema::findOrFail($id);
-        if($tema->status == 'aktif'){
-            return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema yang aktif tidak bisa dihapus.');
-        } else {
-            $tema->delete();
-            return redirect()->route('wpadmin.tema.index')->with('message', 'Tema berhasil dihapus.');
-        }
+        $tipe = Tipe::findOrFail($id);
+        $tipe->delete();
+        return redirect()->route('wpadmin.tipe.index')->with('message', 'Tipe berhasil dihapus.');
     }
 }

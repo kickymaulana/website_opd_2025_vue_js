@@ -39,3 +39,4 @@ Route::post('/wp-admin/tipe/create', [TipeController::class, 'store'])->name('wp
 Route::get('/wp-admin/tipe/{id}/show', [TipeController::class, 'show'])->name('wpadmin.tipe.show')->middleware('auth');
 Route::get('/wp-admin/tipe/{id}/edit', [TipeController::class, 'edit'])->name('wpadmin.tipe.edit')->middleware('auth');
 Route::patch('/wp-admin/tipe/{id}/edit', [TipeController::class, 'update'])->name('wpadmin.tipe.update')->middleware('auth');
+Route::delete('/wp-admin/tipe/{id}/delete', [TipeController::class, 'delete'])->name('wpadmin.tipe.delete')->middleware('auth');
