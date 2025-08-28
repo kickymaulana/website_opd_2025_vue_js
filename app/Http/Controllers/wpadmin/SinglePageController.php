@@ -48,4 +48,26 @@ class SinglePageController extends Controller
             'single_page' => $single_page,
         ]);
     }
+
+    public function edit($id)
+    {
+        $single_page = SinglePage::findOrFail($id);
+        return inertia('wpadmin/SinglePage/Edit', [
+            'single_page' => $single_page,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+        ]);
+
+        $single_page = SinglePage::findOrFail($id);
+        $single_page->update([
+            'nama' => $request->nama,
+        ]);
+
+        return redirect()->route('wpadmin.singlepage.show', ['id' => $single_page->id])->with('message', 'Single Page berhasil diperbarui.');
+    }
 }

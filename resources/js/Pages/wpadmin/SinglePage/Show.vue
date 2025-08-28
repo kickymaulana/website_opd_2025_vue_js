@@ -80,7 +80,7 @@ onMounted(() => {
                             <div class="d-flex align-items-center">
                                 <Link href="/wp-admin/single-page/index"
                                     class="btn btn-primary btn-sm me-2 d-inline-flex align-items-center"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</Link>
-                                <h5 class="card-title">Detail Tipe</h5>
+                                <h5 class="card-title">Detail Single Page</h5>
                             </div>
                                 <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" v-if="$page.props.flash.message">
                                     <i class="bi bi-check-circle me-1"></i>

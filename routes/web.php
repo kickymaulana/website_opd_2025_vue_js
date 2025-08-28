@@ -46,3 +46,5 @@ Route::get('/wp-admin/single-page/index', [SinglePageController::class, 'index']
 Route::get('/wp-admin/single-page/create', [SinglePageController::class, 'create'])->name('wpadmin.singlepage.create')->middleware('auth');
 Route::post('/wp-admin/single-page/create', [SinglePageController::class, 'store'])->name('wpadmin.singlepage.store')->middleware('auth');
 Route::get('/wp-admin/single-page/{id}/show', [SinglePageController::class, 'show'])->name('wpadmin.singlepage.show')->middleware('auth');
+Route::get('/wp-admin/single-page/{id}/edit', [SinglePageController::class, 'edit'])->name('wpadmin.singlepage.edit')->middleware('auth');
+Route::patch('/wp-admin/single-page/{id}/edit', [SinglePageController::class, 'update'])->name('wpadmin.singlepage.update')->middleware('auth');
