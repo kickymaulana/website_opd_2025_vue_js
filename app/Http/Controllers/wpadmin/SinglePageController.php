@@ -40,4 +40,12 @@ class SinglePageController extends Controller
 
         return redirect()->route('wpadmin.singlepage.index')->with('message', 'Single Page berhasil ditambahkan.');
     }
+
+    public function show($id)
+    {
+        $single_page = SinglePage::findOrFail($id);
+        return inertia('wpadmin/SinglePage/Show', [
+            'single_page' => $single_page,
+        ]);
+    }
 }

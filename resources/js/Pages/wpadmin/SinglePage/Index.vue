@@ -92,7 +92,7 @@ onMounted(() => {
                                     <tr v-for="(item, index) in list_single_page.data" :key="index">
                                         <td>{{ item.nama }}</td>
                                         <td class="text-end">
-                                            <Link :href="`/wp-admin/tipe/${ item.id }/show`" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
+                                            <Link :href="`/wp-admin/single-page/${ item.id }/show`" class="btn btn-primary"><i class="bi bi-info-square"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>
