@@ -46,7 +46,7 @@ onMounted(() => {
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                    <li><Link class="dropdown-item" :href="`/wp-admin/tema/${tipe.id}/edit`">Edit</Link></li>
+                                    <li><Link class="dropdown-item" :href="`/wp-admin/tipe/${tipe.id}/edit`">Edit</Link></li>
 
                                     <li>
                                         <a class="dropdown-item" data-bs-toggle="modal"

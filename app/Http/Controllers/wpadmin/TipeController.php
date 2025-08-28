@@ -51,24 +51,24 @@ class TipeController extends Controller
 
     public function edit($id)
     {
-        $tema = Tema::findOrFail($id);
-        return inertia('wpadmin/Tema/Edit', [
-            'tema' => $tema,
+        $tipe = Tipe::findOrFail($id);
+        return inertia('wpadmin/Tipe/Edit', [
+            'tipe' => $tipe,
         ]);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'tema' => 'required|string|max:255',
+            'tipe' => 'required|string|max:255',
         ]);
 
-        $tema = Tema::findOrFail($id);
-        $tema->update([
-            'tema' => $request->tema,
+        $tipe = Tipe::findOrFail($id);
+        $tipe->update([
+            'tipe' => $request->tipe,
         ]);
 
-        return redirect()->route('wpadmin.tema.show',['id' => $tema->id])->with('message', 'Tema berhasil diperbarui.');
+        return redirect()->route('wpadmin.tipe.show',['id' => $tipe->id])->with('message', 'Tipe berhasil diperbarui.');
     }
 
     public function aktifkan($id)

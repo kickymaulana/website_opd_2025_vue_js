@@ -37,3 +37,5 @@ Route::get('/wp-admin/tipe/index', [TipeController::class, 'index'])->name('wpad
 Route::get('/wp-admin/tipe/create', [TipeController::class, 'create'])->name('wpadmin.tipe.create')->middleware('auth');
 Route::post('/wp-admin/tipe/create', [TipeController::class, 'store'])->name('wpadmin.tipe.store')->middleware('auth');
 Route::get('/wp-admin/tipe/{id}/show', [TipeController::class, 'show'])->name('wpadmin.tipe.show')->middleware('auth');
+Route::get('/wp-admin/tipe/{id}/edit', [TipeController::class, 'edit'])->name('wpadmin.tipe.edit')->middleware('auth');
+Route::patch('/wp-admin/tipe/{id}/edit', [TipeController::class, 'update'])->name('wpadmin.tipe.update')->middleware('auth');
