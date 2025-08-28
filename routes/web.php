@@ -7,6 +7,7 @@ use App\Http\Controllers\wpadmin\DashboardController;
 use App\Http\Controllers\wpadmin\TemaController;
 use App\Http\Controllers\wpadmin\HiasanController;
 use App\Http\Controllers\wpadmin\TipeController;
+use App\Http\Controllers\wpadmin\SinglePageController;
 
 Route::get('/', function () {
     return Inertia::render('HelloWorld');
@@ -40,3 +41,5 @@ Route::get('/wp-admin/tipe/{id}/show', [TipeController::class, 'show'])->name('w
 Route::get('/wp-admin/tipe/{id}/edit', [TipeController::class, 'edit'])->name('wpadmin.tipe.edit')->middleware('auth');
 Route::patch('/wp-admin/tipe/{id}/edit', [TipeController::class, 'update'])->name('wpadmin.tipe.update')->middleware('auth');
 Route::delete('/wp-admin/tipe/{id}/delete', [TipeController::class, 'delete'])->name('wpadmin.tipe.delete')->middleware('auth');
+
+Route::get('/wp-admin/single-page/index', [SinglePageController::class, 'index'])->name('wpadmin.tipe.index')->middleware('auth');

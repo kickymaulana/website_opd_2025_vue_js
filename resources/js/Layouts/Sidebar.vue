@@ -65,9 +65,9 @@ import { Link } from '@inertiajs/vue3'
                         </Link>
                     </li>
                     <li>
-                        <a href="#" wire:navigate="true">
+                        <Link href="/wp-admin/single-page/index">
                             <i class="bi bi-circle"></i><span>Single Page</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </li><!-- End Tables Nav -->
