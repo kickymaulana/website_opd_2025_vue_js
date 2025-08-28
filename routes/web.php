@@ -42,4 +42,6 @@ Route::get('/wp-admin/tipe/{id}/edit', [TipeController::class, 'edit'])->name('w
 Route::patch('/wp-admin/tipe/{id}/edit', [TipeController::class, 'update'])->name('wpadmin.tipe.update')->middleware('auth');
 Route::delete('/wp-admin/tipe/{id}/delete', [TipeController::class, 'delete'])->name('wpadmin.tipe.delete')->middleware('auth');
 
-Route::get('/wp-admin/single-page/index', [SinglePageController::class, 'index'])->name('wpadmin.tipe.index')->middleware('auth');
+Route::get('/wp-admin/single-page/index', [SinglePageController::class, 'index'])->name('wpadmin.singlepage.index')->middleware('auth');
+Route::get('/wp-admin/single-page/create', [SinglePageController::class, 'create'])->name('wpadmin.singlepage.create')->middleware('auth');
+Route::post('/wp-admin/single-page/create', [SinglePageController::class, 'store'])->name('wpadmin.singlepage.store')->middleware('auth');

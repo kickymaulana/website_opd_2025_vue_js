@@ -58,7 +58,7 @@ onMounted(() => {
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Tipe</h5>
+                            <h5 class="card-title">Single Page</h5>
 
                             <div class="d-flex justify-content-between">
                                 <div class="col-md-2">
@@ -66,7 +66,7 @@ onMounted(() => {
                                         id="cari" placeholder="Cari data" v-model="cari">
                                 </div>
                                 <div class="d-flex">
-                                    <Link href="/wp-admin/tipe/create" class="btn btn-primary btn-sm">Tambah</Link>
+                                    <Link href="/wp-admin/single-page/create" class="btn btn-primary btn-sm">Tambah</Link>
                                 </div>
                             </div>
 

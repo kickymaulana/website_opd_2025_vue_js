@@ -22,4 +22,22 @@ class SinglePageController extends Controller
         ]);
 
     }
+
+    public function create()
+    {
+        return inertia('wpadmin/SinglePage/Create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+        ]);
+
+        SinglePage::create([
+            'nama' => $request->nama,
+        ]);
+
+        return redirect()->route('wpadmin.singlepage.index')->with('message', 'Single Page berhasil ditambahkan.');
+    }
 }
